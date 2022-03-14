@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button';
-import AppForm from './AppForm';
+import useAppForm from './AppForm';
 
 const AppModal = () => {
+    const {render} = useAppForm();
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -25,7 +26,7 @@ const AppModal = () => {
                 <Modal.Title>Add Contacts</Modal.Title>
             </Modal.Header>
 
-            <Modal.Body><AppForm  handleClose={handleClose}/>
+            <Modal.Body>{render}
 
             </Modal.Body>
       </Modal>

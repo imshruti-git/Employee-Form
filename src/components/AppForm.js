@@ -2,17 +2,17 @@ import React, { useState, useEffect } from 'react'
 import { Form, Row, Col, Button } from 'react-bootstrap'
 
 //getting the values from localstorage//
-    const getDatafromLS=()=>{
-        const data = localStorage.getItem('records');
-        if(data){
-            return JSON.parse(data);
-        }
-        else{
-            return []
-        }
+const getDatafromLS=()=>{
+    const data = localStorage.getItem('records');
+    if(data){
+        return JSON.parse(data);
     }
+    else{
+        return []
+    } 
+}
 
-const AppForm = ({handleClose}) => {
+const useAppForm = () => {
 
     //main array of objects
     const [records, setRecords] = useState(getDatafromLS());
@@ -50,7 +50,9 @@ const AppForm = ({handleClose}) => {
        localStorage.setItem('records', JSON.stringify(records));
     },[records])
    
-  return (
+  return {
+      records,
+      render:(
     <div>
        <Form onSubmit={handleSubmit}>
             <Row>
@@ -107,7 +109,6 @@ const AppForm = ({handleClose}) => {
                 <Button 
                     type="submit" 
                     variant="primary"
-                    onClick={handleClose}
                 >
                     ADD
                 </Button>
@@ -116,7 +117,7 @@ const AppForm = ({handleClose}) => {
             </Row>
         </Form>
     </div>
-  )
+  )}
 }
 
-export default AppForm
+export default useAppForm
