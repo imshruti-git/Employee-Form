@@ -20,6 +20,7 @@ const useAppForm = () => {
     //main array of objects
     const [records, setRecords] = useState(getDatafromLS());
 
+    console.log(records)
     //input field states //
 
     const [name, setName] = useState('');
@@ -36,7 +37,7 @@ const useAppForm = () => {
             name,
             contact,
             address,
-            profilepic
+            profilepic,
         }
         console.log(record);
 
@@ -64,7 +65,6 @@ const useAppForm = () => {
             return element.id === id
         });
         console.log(newEditItem)
-        console.log(newEditItem.contact)
        
     }
 

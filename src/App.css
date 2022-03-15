@@ -12,7 +12,17 @@
 
 .header{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   background-color: aquamarine;
   padding: 1rem;
+}
+
+.deleteIcon{
+  color:red;
+  margin-right: 35px;
+  margin-left: 35px;
+}
+
+.editIcon{
+  color: green;
 }

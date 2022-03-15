@@ -5,7 +5,7 @@ import AppModal from './Modal'
 const TopBar = () => {
   return (
     <div className='header'>
-        TopBar
+       <h3> Employee form</h3>
         <AppModal />
     </div>
   )

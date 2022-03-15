@@ -1,14 +1,18 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Modal from 'react-bootstrap/Modal'
 import Button from 'react-bootstrap/Button';
 import useAppForm from './AppForm';
 
 const AppModal = () => {
-    const {render} = useAppForm();
+    const {render, records} = useAppForm();
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    useEffect(() => {
+      handleClose()
+    },[records])
     
   return (
     <div>
