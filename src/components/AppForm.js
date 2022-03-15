@@ -1,5 +1,8 @@
+
 import React, { useState, useEffect } from 'react'
 import { Form, Row, Col, Button } from 'react-bootstrap'
+
+
 
 //getting the values from localstorage//
 const getDatafromLS=()=>{
@@ -50,11 +53,20 @@ const useAppForm = () => {
             const filteredvalue=records.filter((element, index)=>{
               return element.id !== id
             })
-            console.log(id);
             setRecords(filteredvalue);
           }
     
   
+    //editing records
+
+    const editEntry =(id) =>{
+        let newEditItem = records.find((element) =>{
+            return element.id === id
+        });
+        console.log(newEditItem)
+        console.log(newEditItem.contact)
+       
+    }
 
     //saving data to local storage//
     useEffect(()=>{
@@ -65,6 +77,7 @@ const useAppForm = () => {
       records,
       setRecords,
       deleteEntry,
+      editEntry,
       render: (
     <div>
        <Form onSubmit={handleSubmit}>

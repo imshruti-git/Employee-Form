@@ -6,13 +6,13 @@ import TopBar from './components/TopBar';
 import useAppForm from './components/AppForm';
 
 function App() {
- const { records, setRecords, deleteEntry } = useAppForm()
+ const { records, setRecords, deleteEntry, editEntry } = useAppForm()
 
   return (
     <div className="App">
       <TopBar />
       
-      <AppTable {...{records, setRecords, deleteEntry }}/>
+      <AppTable {...{records, setRecords, deleteEntry, editEntry}}/>
     </div>
   );
 }
