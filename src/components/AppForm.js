@@ -44,7 +44,18 @@ const useAppForm = () => {
         setProfilepic('');
     }
 
+   //deleting record//
+  
+        const deleteEntry =(id)=>{
+            const filteredvalue=records.filter((element, index)=>{
+              return element.id !== id
+            })
+            console.log(id);
+            setRecords(filteredvalue);
+          }
     
+  
+
     //saving data to local storage//
     useEffect(()=>{
        localStorage.setItem('records', JSON.stringify(records));
@@ -52,7 +63,9 @@ const useAppForm = () => {
    
   return {
       records,
-      render:(
+      setRecords,
+      deleteEntry,
+      render: (
     <div>
        <Form onSubmit={handleSubmit}>
             <Row>
