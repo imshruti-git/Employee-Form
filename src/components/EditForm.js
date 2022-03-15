@@ -1,9 +1,9 @@
 import React from 'react'
 import { Form, Row, Col, Button } from 'react-bootstrap'
 
-const EditForm = ({records}) => {
+const EditForm = () => {
 
-  console.log(records);
+
   return (
     <div>
         <div>

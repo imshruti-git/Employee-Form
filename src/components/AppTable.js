@@ -6,28 +6,27 @@ import Modal from 'react-bootstrap/Modal'
 import EditForm from './EditForm';
 
 
-const AppTable = ({records, setRecords, deleteEntry, editEntry}) => {
+const AppTable = ({records, deleteEntry, editEntry}) => {
 
+  const [view, setView] = useState([]);
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
 
   const handleShow = (id) => {
     setShow(true)
-    let viewItem = records.find((element) =>{
+    const viewItem = records.find((element) =>{
       return element.id === id
-      
   });
-  console.log(viewItem)
+  console.log(viewItem);
+  setView(viewItem);
   }
 
+
   const [edit, setEdit] = useState(false);
-
   const handleCloseEdit = () => setEdit(false);
-
   const handleShowEdit = () => setEdit(true);
 
-  console.log(records);
+  //console.log(records);
 
   return (
     <div>
@@ -36,6 +35,7 @@ const AppTable = ({records, setRecords, deleteEntry, editEntry}) => {
               <Modal.Title>View Details</Modal.Title>
           </Modal.Header>
           <Modal.Body >
+            {view.name} {view.contact} {view.address}
           </Modal.Body>
           
       </Modal>
@@ -69,7 +69,7 @@ const AppTable = ({records, setRecords, deleteEntry, editEntry}) => {
               <Modal.Title>Edit Employee</Modal.Title>
           </Modal.Header>
           <Modal.Body >
-            <EditForm records={records}/>
+            <EditForm/>
           </Modal.Body>
           
       </Modal>
