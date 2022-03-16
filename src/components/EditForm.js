@@ -1,38 +1,38 @@
 import React, { useState }from 'react'
 import { Form, Row, Col, Button } from 'react-bootstrap'
 
-const EditForm = ({display}) => {
+const EditForm = ({display, updateEntry, closeEdit}) => {
 
 
-    console.log(display.contact)
-/*input field states //
 
-//const data={name, contact, address, profilepic};
-//console.log(data)
+const id = display.id;
+
+//input field states //
 
 const [name, setName] = useState(display.name);
 const [contact, setContact] = useState(display.contact);
 const [address, setAddress] = useState(display.address);
-const [profilepic, setProfilepic] = useState(display.profilepic);
+//const [profilepic, setProfilepic] = useState(display.profilepic);
 
+const updatedEmployee={id, name, contact, address};
 
 const handleSubmit = (e) => {
     e.preventDefault();
-    updateEmployee(id, updatedEmployee)
-}*/
+    updateEntry(id, updatedEmployee)
+}
 
   return (
     <div>
         
-       <Form>
+       <Form onSubmit={handleSubmit}>
             <Row>
                 <Col>
                     <Form.Label>Employee Name</Form.Label>
                     <Form.Control 
                         type='text'
                         placeholder="Name"
-                        //onChange={(e) => setName(e.target.value)}
-                        value={display.name}              
+                        onChange={(e) => setName(e.target.value)}
+                        value={name}              
                     />
                 </Col>
                 <Col>
@@ -40,8 +40,8 @@ const handleSubmit = (e) => {
                     <Form.Control 
                         type='number'
                         placeholder="012345"
-                        //onChange={(e) =>setContact(e.target.value)}
-                        value={display.contact}
+                        onChange={(e) =>setContact(e.target.value)}
+                        value={contact}
                     />
                 </Col>
             </Row>
@@ -52,8 +52,8 @@ const handleSubmit = (e) => {
                      <Form.Label>Address</Form.Label>
                     <Form.Control 
                         placeholder="Address" 
-                       // onChange={(e) => setAddress(e.target.value)}
-                        value={display.address}
+                        onChange={(e) => setAddress(e.target.value)}
+                        value={address}
                     />
                 </Col>
               
@@ -75,7 +75,9 @@ const handleSubmit = (e) => {
                 <Col></Col>
                 <Col>
                 <Button 
-                   variant="success" type="submit"
+                   variant="success" 
+                   type="submit"
+                   onClick={closeEdit}
                 >
                     EDIT
                 </Button>

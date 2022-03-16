@@ -35,7 +35,7 @@ const AppTable = ({records, deleteEntry, updateEntry, display}) => {
 
   
   //console.log(records);
-
+  
 
   const handleClick =(id) => {
     handleShowEdit();
@@ -97,6 +97,8 @@ const AppTable = ({records, deleteEntry, updateEntry, display}) => {
                             <Modal.Body >
                                    <EditForm 
                                        display={display}
+                                       updateEntry={updateEntry}
+                                       closeEdit={handleCloseEdit}
                                     />
                             </Modal.Body>  
                       </Modal>
