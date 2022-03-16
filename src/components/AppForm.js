@@ -20,7 +20,11 @@ const useAppForm = () => {
     //main array of objects
     const [records, setRecords] = useState(getDatafromLS());
 
-    console.log(records)
+    //console.log(records)
+
+    //state for displaying selecting editing entry
+  const [display, setDisplay] = useState([]);
+
     //input field states //
 
     const [name, setName] = useState('');
@@ -59,25 +63,29 @@ const useAppForm = () => {
     
   
     //editing records
-
-    const editEntry =(id) =>{
+    
+    const updateEntry = (id) => {
+        //setRecords(records.map((employee) => employee.id === id ? updatedEmployee : employee))
         let newEditItem = records.find((element) =>{
             return element.id === id
         });
         console.log(newEditItem)
-       
+        setDisplay(newEditItem);
     }
+
 
     //saving data to local storage//
     useEffect(()=>{
        localStorage.setItem('records', JSON.stringify(records));
     },[records])
-   
+
+    
   return {
       records,
       setRecords,
       deleteEntry,
-      editEntry,
+      updateEntry,
+      display,
       render: (
     <div>
        <Form onSubmit={handleSubmit}>
@@ -86,6 +94,7 @@ const useAppForm = () => {
                     <Form.Label>Employee Name</Form.Label>
                     <Form.Control 
                         type='text'
+                        required
                         placeholder="Name"
                         onChange={(e) => setName(e.target.value)}
                         value={name}
@@ -95,6 +104,7 @@ const useAppForm = () => {
                 <Form.Label>Contact Details</Form.Label>
                     <Form.Control 
                         type='number'
+                        required
                         placeholder="012345"
                         onChange={(e) => setContact(e.target.value)}
                         value={contact}  

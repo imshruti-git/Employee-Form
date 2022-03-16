@@ -30,8 +30,8 @@ const AppModal = () => {
                 <Modal.Title>Add Contacts</Modal.Title>
             </Modal.Header>
 
-            <Modal.Body>{render}
-
+            <Modal.Body>
+                  {render}
             </Modal.Body>
       </Modal>
     </div>

@@ -1,12 +1,29 @@
-import React from 'react'
+import React, { useState }from 'react'
 import { Form, Row, Col, Button } from 'react-bootstrap'
 
-const EditForm = () => {
+const EditForm = ({display}) => {
 
+
+    console.log(display.contact)
+/*input field states //
+
+//const data={name, contact, address, profilepic};
+//console.log(data)
+
+const [name, setName] = useState(display.name);
+const [contact, setContact] = useState(display.contact);
+const [address, setAddress] = useState(display.address);
+const [profilepic, setProfilepic] = useState(display.profilepic);
+
+
+const handleSubmit = (e) => {
+    e.preventDefault();
+    updateEmployee(id, updatedEmployee)
+}*/
 
   return (
     <div>
-        <div>
+        
        <Form>
             <Row>
                 <Col>
@@ -14,6 +31,8 @@ const EditForm = () => {
                     <Form.Control 
                         type='text'
                         placeholder="Name"
+                        //onChange={(e) => setName(e.target.value)}
+                        value={display.name}              
                     />
                 </Col>
                 <Col>
@@ -21,6 +40,8 @@ const EditForm = () => {
                     <Form.Control 
                         type='number'
                         placeholder="012345"
+                        //onChange={(e) =>setContact(e.target.value)}
+                        value={display.contact}
                     />
                 </Col>
             </Row>
@@ -31,7 +52,8 @@ const EditForm = () => {
                      <Form.Label>Address</Form.Label>
                     <Form.Control 
                         placeholder="Address" 
-                       
+                       // onChange={(e) => setAddress(e.target.value)}
+                        value={display.address}
                     />
                 </Col>
               
@@ -43,6 +65,8 @@ const EditForm = () => {
                     <Form.Control
                         type='file' 
                         name="myImage"
+                      //  onChange={(e) => setProfilepic(e.target.value)}
+                      //  value={display.profilepic}
                     />
                 </Col>
             </Row>
@@ -51,8 +75,7 @@ const EditForm = () => {
                 <Col></Col>
                 <Col>
                 <Button 
-                    type="submit" 
-                    variant="primary"
+                   variant="success" type="submit"
                 >
                     EDIT
                 </Button>
@@ -60,7 +83,7 @@ const EditForm = () => {
                 
             </Row>
         </Form>
-    </div>
+    
     </div>
   )
 }
