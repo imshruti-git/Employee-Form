@@ -23,10 +23,9 @@ const useAppForm = () => {
     //console.log(records)
 
     //state for displaying selecting editing entry
-  const [display, setDisplay] = useState([]);
+    const [display, setDisplay] = useState([]);
 
     //input field states //
-
     const [name, setName] = useState('');
     const [contact, setContact] = useState('');
     const [address, setAddress] = useState('');
@@ -55,26 +54,30 @@ const useAppForm = () => {
    //deleting record//
   
         const deleteEntry =(id)=>{
-            const filteredvalue=records.filter((element, index)=>{
+            const filteredvalue=records.filter((element)=>{
               return element.id !== id
             })
             setRecords(filteredvalue);
           }
     
-  
+  //shows the previous values for the selected entry to edit
+          const updateShowEntry = (id) => {
+            let newEditItem = records.find((element) =>{
+                return element.id === id
+            });
+            console.log(newEditItem)
+            setDisplay(newEditItem)
+          }
+
+
     //editing records
 
     const updateEntry = (id, updatedEmployee) => {
-        
-       let newEditItem = records.find((element) =>{
-            return element.id === id
-        });
-        console.log(newEditItem)
         console.log(updatedEmployee)
-        setDisplay(newEditItem)
-       /* setRecords(records.map((employee) => {
-            return employee.id === id ? {...updatedEmployee} : employee;})
-        );*/
+        
+        setRecords(records.map((employee) => {
+            return employee.id === id ? updatedEmployee : employee;})
+        );
     }
 
 
@@ -89,6 +92,7 @@ const useAppForm = () => {
       setRecords,
       deleteEntry,
       updateEntry,
+      updateShowEntry,
       display,
       render: (
     <div>
@@ -99,6 +103,7 @@ const useAppForm = () => {
                     <Form.Control 
                         type='text'
                         required
+                        name='name'
                         placeholder="Name"
                         onChange={(e) => setName(e.target.value)}
                         value={name}
@@ -109,6 +114,7 @@ const useAppForm = () => {
                     <Form.Control 
                         type='number'
                         required
+                        name='contact'
                         placeholder="012345"
                         onChange={(e) => setContact(e.target.value)}
                         value={contact}  
@@ -122,6 +128,7 @@ const useAppForm = () => {
                      <Form.Label>Address</Form.Label>
                     <Form.Control 
                         placeholder="Address" 
+                        name='address'
                         onChange={(e) => setAddress(e.target.value)}
                         value={address} 
                     />

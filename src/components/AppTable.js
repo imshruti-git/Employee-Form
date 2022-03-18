@@ -11,7 +11,7 @@ import useAppForm from './AppForm';
 
 const AppTable = () => {
 
-  const { render, records, deleteEntry, updateEntry, display} = useAppForm()
+  const { render, records, deleteEntry, updateEntry, updateShowEntry, display} = useAppForm()
 
 
   //state for viewing records in view modal
@@ -58,10 +58,14 @@ const AppTable = () => {
 
   const handleClick =(id) => {
     handleShowEdit();
-    updateEntry(id)
+    updateShowEntry(id)
   }
 
 
+  const handleCancel =() => {
+    handleCloseEdit();
+    
+  }
 
   return (
     <div>
@@ -153,7 +157,7 @@ const AppTable = () => {
                                    <EditForm 
                                        display={display}
                                        updateEntry={updateEntry}
-                                       closeEdit={handleCloseEdit}
+                                       handleCancel={handleCancel}
                                     />
                             </Modal.Body>  
                       </Modal>

@@ -1,9 +1,10 @@
 import React, { useState }from 'react'
 import { Form, Row, Col, Button } from 'react-bootstrap'
 
-const EditForm = ({display, updateEntry, closeEdit}) => {
+const EditForm = ({display, updateEntry, handleCancel}) => {
 
 
+//const [editContactId, setEditContactId] = useState(display.id)
 
 const id = display.id;
 
@@ -30,6 +31,7 @@ const handleSubmit = (e) => {
                     <Form.Label>Employee Name</Form.Label>
                     <Form.Control 
                         type='text'
+                        name='name'
                         placeholder="Name"
                         onChange={(e) => setName(e.target.value)}
                         value={name}              
@@ -39,6 +41,7 @@ const handleSubmit = (e) => {
                 <Form.Label>Contact Details</Form.Label>
                     <Form.Control 
                         type='number'
+                        name='contact'
                         placeholder="012345"
                         onChange={(e) =>setContact(e.target.value)}
                         value={contact}
@@ -52,6 +55,7 @@ const handleSubmit = (e) => {
                      <Form.Label>Address</Form.Label>
                     <Form.Control 
                         placeholder="Address" 
+                        name='address'
                         onChange={(e) => setAddress(e.target.value)}
                         value={address}
                     />
@@ -77,7 +81,7 @@ const handleSubmit = (e) => {
                 <Button 
                    variant="success" 
                    type="submit"
-                   onClick={closeEdit}
+                   onClick={handleCancel}
                 >
                     EDIT
                 </Button>
