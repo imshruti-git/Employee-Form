@@ -66,14 +66,15 @@ const useAppForm = () => {
 
     const updateEntry = (id, updatedEmployee) => {
         
-        let newEditItem = records.find((element) =>{
+       let newEditItem = records.find((element) =>{
             return element.id === id
         });
         console.log(newEditItem)
         console.log(updatedEmployee)
-        setDisplay(newEditItem);
-        //setRecords(updatedEmployee)
-        //setRecords(records.map((employee) => employee.id === id ? updatedEmployee : employee))
+        setDisplay(newEditItem)
+       /* setRecords(records.map((employee) => {
+            return employee.id === id ? {...updatedEmployee} : employee;})
+        );*/
     }
 
 

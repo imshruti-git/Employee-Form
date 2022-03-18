@@ -1,16 +1,22 @@
-import React, { useState } from 'react'
-import { Table } from 'react-bootstrap'
+import React, { useState, useEffect } from 'react'
+import { Table, Button } from 'react-bootstrap'
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import Modal from 'react-bootstrap/Modal'
 import EditForm from './EditForm';
 
 
-const AppTable = ({records, deleteEntry, updateEntry, display}) => {
+import useAppForm from './AppForm';
+
+
+const AppTable = () => {
+
+  const { render, records, deleteEntry, updateEntry, display} = useAppForm()
 
 
   //state for viewing records in view modal
   const [view, setView] = useState([]);
+
 
 
   //displaying the view modal
@@ -27,23 +33,40 @@ const AppTable = ({records, deleteEntry, updateEntry, display}) => {
   }
 
 
+
+
   //displaying the edit modal
   const [edit, setEdit] = useState(false);
   const handleCloseEdit = () => setEdit(false);
-
   const handleShowEdit = () => setEdit(true);
-
+    
   
   //console.log(records);
   
+
+
+  //displaying the add modal
+  const [addshow, setaddShow] = useState(false);
+  const handleCloseAdd = () => setaddShow(false);
+  const handleShowAdd = () => setaddShow(true);
+
+  useEffect(() => {
+    handleCloseAdd()
+  },[records])
+
+
 
   const handleClick =(id) => {
     handleShowEdit();
     updateEntry(id)
   }
 
+
+
   return (
     <div>
+
+      {/*this is for the view show modal*/}
       <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
                       <Modal.Title>View Details</Modal.Title>
@@ -59,6 +82,31 @@ const AppTable = ({records, deleteEntry, updateEntry, display}) => {
       </Modal>
 
 
+      {/*this is for the add show modal*/}
+      <Modal 
+        show={addshow} 
+        onHide={handleCloseAdd}  
+        backdrop="static"
+        keyboard={false} 
+      >
+            <Modal.Header closeButton>
+                <Modal.Title>Add Contacts</Modal.Title>
+            </Modal.Header>
+
+            <Modal.Body>
+                {render}
+            </Modal.Body>
+      </Modal>
+
+      <div className='header'>
+       <h3> Employee form</h3>
+       <Button variant="primary" onClick={handleShowAdd}>
+            ADD EMPLOYEE
+        </Button>
+    </div>
+
+
+    {/*table showing the added employees*/}
       <Table striped hover>
             <thead>
                   <tr>
@@ -66,7 +114,7 @@ const AppTable = ({records, deleteEntry, updateEntry, display}) => {
                       <th>Name</th>
                       <th>Address</th>
                       <th>Contact Details</th>
-                      <th></th>
+                      <th>Actions</th>
                   </tr>
             </thead>
 
@@ -89,7 +137,14 @@ const AppTable = ({records, deleteEntry, updateEntry, display}) => {
                             />
                          </td>
 
-                      <Modal show={edit} onHide={handleCloseEdit}>
+
+                      {/*this is for the edit show modal*/}
+                      <Modal 
+                          show={edit} 
+                          onHide={handleCloseEdit}
+                          backdrop="static"
+                          keyboard={false} 
+                      >
                             <Modal.Header closeButton>
                                     <Modal.Title>Edit Employee</Modal.Title>
                             </Modal.Header>
