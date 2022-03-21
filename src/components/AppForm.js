@@ -127,6 +127,7 @@ const useAppForm = () => {
                    
                      <Form.Label>Address</Form.Label>
                     <Form.Control 
+                        type='text'
                         placeholder="Address" 
                         name='address'
                         onChange={(e) => setAddress(e.target.value)}

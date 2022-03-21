@@ -7,6 +7,7 @@ import EditForm from './EditForm';
 
 
 import useAppForm from './AppForm';
+import ViewDetails from './ViewDetails';
 
 
 const AppTable = () => {
@@ -44,11 +45,11 @@ const AppTable = () => {
   //console.log(records);
   
 
-
   //displaying the add modal
   const [addshow, setaddShow] = useState(false);
   const handleCloseAdd = () => setaddShow(false);
   const handleShowAdd = () => setaddShow(true);
+
 
   useEffect(() => {
     handleCloseAdd()
@@ -68,19 +69,21 @@ const AppTable = () => {
   }
 
   return (
-    <div>
+    <>
 
       {/*this is for the view show modal*/}
-      <Modal show={show} onHide={handleClose}>
+      <Modal 
+        show={show} 
+        onHide={handleClose}
+       
+      >
           <Modal.Header closeButton>
                       <Modal.Title>View Details</Modal.Title>
           </Modal.Header>
 
           <Modal.Body >
                   <div className='employee-details'>
-                  <span>{view.name}</span>
-                  <span>{view.contact}</span>
-                  <span>{view.address}</span> 
+                    <ViewDetails view={view}/>
                   </div> 
           </Modal.Body>  
       </Modal>
@@ -102,12 +105,14 @@ const AppTable = () => {
             </Modal.Body>
       </Modal>
 
+
+      {/*This is the header section */}
       <div className='header'>
-       <h3> Employee form</h3>
-       <Button variant="primary" onClick={handleShowAdd}>
-            ADD EMPLOYEE
-        </Button>
-    </div>
+          <h3> Employee form</h3>
+          <Button variant="primary" onClick={handleShowAdd}>
+                ADD EMPLOYEE
+            </Button>
+      </div>
 
 
     {/*table showing the added employees*/}
@@ -166,7 +171,7 @@ const AppTable = () => {
                     
           </tbody>
       </Table>
-    </div>
+      </>
   )
 }
 

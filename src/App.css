@@ -21,7 +21,7 @@
 .deleteIcon{
   color:red;
   margin-right: 35px;
-  margin-left: 35px;
+  
 }
 
 .editIcon{
@@ -29,9 +29,15 @@
 }
 
 .employee-details{
-  font-size: 20px;
+  font-size: 18px;
 }
 
-span{
-  padding: 40px;
+label {
+  font-weight: bold;
+  color: red;
+  padding-bottom: 0.7rem;
+}
+
+span {
+  margin-top: 4rem;
 }
