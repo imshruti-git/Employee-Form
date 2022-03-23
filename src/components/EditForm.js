@@ -65,8 +65,8 @@ const handleSubmit = (e) => {
                     <Form.Control
                         type='file' 
                         name="myImage"
-                      //  onChange={(e) => setProfilepic(e.target.value)}
-                      //  value={display.profilepic}
+                      //onChange={(e) => setProfilepic(e.target.value)}
+                        //value={profilepic}
                     />
                 </Col>
             </Row>

@@ -6,6 +6,9 @@ const ViewDetails = ({ view }) => {
     <>
         <Row>
             <Col>
+            <label>Profile Pic:</label>
+            </Col>
+            <Col>
             <label>Employee Name:</label>
             </Col>
             <Col>
@@ -16,6 +19,9 @@ const ViewDetails = ({ view }) => {
             </Col>
         </Row>
         <Row>
+           <Col>
+           <img alt="not found" width={"50px"} height={'50px'} src={view.profilepic} />
+           </Col>
             <Col>
             <span>{view.name}</span>
             </Col>

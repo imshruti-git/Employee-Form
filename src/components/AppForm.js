@@ -51,6 +51,14 @@ const useAppForm = () => {
         setProfilepic('');
     }
 
+    //uploading image//
+    const uploadImage = (e) =>{
+        if (e.target.files && e.target.files[0]) {
+            let img = e.target.files[0];
+            setProfilepic(URL.createObjectURL(img));
+          } 
+    }
+
    //deleting record//
   
         const deleteEntry =(id)=>{
@@ -143,10 +151,7 @@ const useAppForm = () => {
                     <Form.Control
                         type='file' 
                         name="myImage"
-                        onChange={(e) => {
-                            console.log(e.target.files[0]);
-                            setProfilepic(e.target.files[0])
-                        }} 
+                        onChange={uploadImage}
                     />
                 </Col>
             </Row>
